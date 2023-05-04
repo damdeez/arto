@@ -1,7 +1,7 @@
 import styles from '../styles/Home.module.css';
 import homeStyles from './Main.module.css';
 import ArtoPic from '../assets/arto-on-porch.jpg';
-import Image from 'next/image';
+import Image from 'next/image'
 
 function Main() {
   return (
@@ -9,7 +9,7 @@ function Main() {
       Arto, a dog.
       <Image src={ArtoPic} alt="arto" className={homeStyles.artoPic} />
     </main>
-  );
+  )
 };
 
 export default Main;
