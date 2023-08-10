@@ -1,17 +1,16 @@
-import { useEffect } from 'react';
+import useSWR from 'swr';
+
 import styles from '../styles/Home.module.css';
 import homeStyles from './Main.module.css';
 import ArtoPic from '../assets/arto-on-porch.jpg';
 import Image from 'next/image'
 
 function Main() {
-  useEffect(() => {
-    fetch('/api/getStatus')
-      .then((res) => res.json())
-      .then((data) => {
-        console.info('>>> Arto data', data);
-      })
-  }, []);
+  const { data, error, isLoading } = useSWR(
+    '/api/status',
+    (...args) => fetch(...args).then(res => res.json()
+    ));
+  console.info('>>> Arto data', data);
 
   return (
     <main className={styles.main}>
