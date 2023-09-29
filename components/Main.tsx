@@ -15,6 +15,7 @@ function Main() {
   return (
     <main className={styles.main}>
       Arto, a dog.
+      <div>I am currently {!isLoading ? data.status : null}</div>
       <Image src={ArtoPic} alt="arto" className={homeStyles.artoPic} />
     </main>
   )
