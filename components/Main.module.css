@@ -1,4 +1,6 @@
 .artoPic {
+  position: absolute;
+  bottom: 0;
   width: 400px;
   height: auto;
   border-radius: 3px;
