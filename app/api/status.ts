@@ -1,18 +1,14 @@
 // Next.js API route support: https://nextjs.org/docs/api-routes/introduction
-import type { NextApiRequest, NextApiResponse } from 'next';
+import type { NextApiRequest, NextApiResponse } from "next";
 
 type Data = {
-  status: string
-}
+  status: string;
+};
 
-const statuses = [
-  'sleeping',
-  'sniffing',
-  'exploring',
-  'outside'
-];
+const statuses = ["sleeping", "sniffing", "exploring", "outside"];
 
-function randomIntFromInterval(min, max) { // min and max included 
+function randomIntFromInterval(min, max) {
+  // min and max included
   return Math.floor(Math.random() * (max - min + 1) + min);
 }
 
