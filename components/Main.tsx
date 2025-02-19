@@ -38,7 +38,7 @@ function Main() {
             );
           }
         },
-        (error) => {
+        () => {
           setErrorMessage(
             "Unable to get your location. Please enable location services."
           );
