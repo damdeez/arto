@@ -7,6 +7,7 @@ Little project dedicated to my dog. It gets his current status via an input and 
 First, run the development server:
 
 ```bash
+npm i
 npm run dev
 # or
 yarn dev
