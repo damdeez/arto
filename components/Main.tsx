@@ -15,10 +15,10 @@ function Main() {
 
   return (
     <main className={styles.main}>
-      Arto, a dog.
+      Arto, a dog. The current update:
       {summary && (
-        <div className="mt-4 p-4 bg-slate-50 rounded-lg">
-          <h3 className="font-medium mb-2">Analysis:</h3>
+        <div className="w-xl mt-4 p-4 bg-slate-100 rounded-lg">
+          {/* <h3 className="font-medium mb-2">Analysis:</h3> */}
           <p>{summary}</p>
         </div>
       )}
