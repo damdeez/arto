@@ -127,7 +127,7 @@ function ActivityInput() {
         </div>
       )}
       {summary && (
-        <div className="mt-4 p-4 bg-slate-50 rounded-lg">
+        <div className="w-xl p-4 mt-8 bg-slate-100 rounded-lg border-1 border-slate-300 shadow-sm">
           <h3 className="font-medium mb-2">Analysis:</h3>
           <p>{summary}</p>
         </div>
