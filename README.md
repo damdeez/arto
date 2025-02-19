@@ -16,4 +16,4 @@ pnpm dev
 
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
-![Website Deploy](https://arto.vercel.app/?url=http://www.nextjs.org/&name=website)
+![Website Deploy](https://deploy-badge.vercel.app/?url=https://arto.vercel.app&name=Arto)
