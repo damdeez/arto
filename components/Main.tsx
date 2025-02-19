@@ -1,5 +1,4 @@
 import styles from "../styles/Home.module.css";
-import homeStyles from "./Main.module.css";
 import ArtoPic from "../assets/arto-on-porch.jpg";
 import Image from "next/image";
 import { useEffect, useState } from "react";
@@ -14,10 +13,10 @@ function Main() {
   }, []);
 
   return (
-    <main className={styles.main}>
+    <main className="flex flex-col items-center height-full mt-8">
       Arto, a dog. The current update:
       {summary && (
-        <div className="w-xl mt-4 p-4 bg-slate-100 rounded-lg border-1 border-slate-300 shadow-sm">
+        <div className="w-xl p-4 mt-8 bg-slate-100 rounded-lg border-1 border-slate-300 shadow-sm">
           {/* <h3 className="font-medium mb-2">Analysis:</h3> */}
           <p>{summary}</p>
         </div>
