@@ -1,5 +1,7 @@
 # Arto, the dog 🐶
 
+Little project dedicated to my dog. It gets his current status via an input and then it generates a "mood" using the OpenAI and Weather.gov APIs. Built with NextJS, Tailwind, TypeScript and OpenAI SDK.
+
 ## Getting Started
 
 First, run the development server:
@@ -13,3 +15,5 @@ pnpm dev
 ```
 
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+
+![Website Deploy](https://arto.vercel.app/?url=http://www.nextjs.org/&name=website)
