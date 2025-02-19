@@ -4,9 +4,7 @@ import { z } from "zod";
 
 export const maxDuration = 30;
 
-export default async function POST(req: Request, res: Response) {
-  // console.info(">>>> res: \n", res.status);
-  console.info(">>>>  req: ", req);
+export default async function POST(req: Request) {
   const { messages } = await req.json();
 
   const result = streamText({
