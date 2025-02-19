@@ -3,8 +3,9 @@ import homeStyles from "./Main.module.css";
 import ArtoPic from "../assets/arto-on-porch.jpg";
 import Image from "next/image";
 import { useEffect, useState } from "react";
+import { WeatherData } from "../types/shared";
 
-const isLocationInUS = (lat, lon) => {
+const isLocationInUS = (lat: number, lon: number) => {
   return (
     lat >= 24.396308 && lat <= 49.384358 && lon >= -125.0 && lon <= -66.93457
   );
@@ -13,10 +14,13 @@ const isLocationInUS = (lat, lon) => {
 function Main() {
   const [dogActivity, setDogActivity] = useState("");
   const [summary, setSummary] = useState("");
-  const [weather, setWeather] = useState(null);
+  const [weather, setWeather] = useState<WeatherData | null>(null);
   const [loading, setLoading] = useState(false);
-  const [location, setLocation] = useState<{ latitude: number; longitude: number } | null>(null);
-  const [error, setError] = useState("");
+  const [location, setLocation] = useState<{
+    latitude: number;
+    longitude: number;
+  } | null>(null);
+  const [errorMessage, setErrorMessage] = useState("");
 
   useEffect(() => {
     if (navigator.geolocation) {
@@ -27,15 +31,15 @@ function Main() {
 
           if (isLocationInUS(lat, lon)) {
             setLocation({ latitude: lat, longitude: lon });
-            setError("");
+            setErrorMessage("");
           } else {
-            setError(
+            setErrorMessage(
               "This app only works with locations in the United States."
             );
           }
         },
         (error) => {
-          setError(
+          setErrorMessage(
             "Unable to get your location. Please enable location services."
           );
         }
@@ -58,7 +62,7 @@ function Main() {
 
       if (!response.ok) {
         throw new Error("Failed to analyze mood");
-      };
+      }
 
       const data = await response.json();
       setWeather(data.weather);
@@ -73,7 +77,7 @@ function Main() {
     e.preventDefault();
     if (!dogActivity.trim()) {
       return;
-    };
+    }
     console.log("Analyzing mood...");
 
     setLoading(true);
@@ -85,6 +89,7 @@ function Main() {
   return (
     <main className={styles.main}>
       Arto, a dog.
+      {errorMessage && <div>{errorMessage}</div>}
       <form onSubmit={handleSubmit}>
         <label htmlFor="activity" className="block text-sm font-medium">
           What is your dog doing right now?

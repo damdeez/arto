@@ -2,6 +2,7 @@
 import { NextResponse } from "next/server";
 import OpenAI from "openai";
 import axios from "axios";
+import { WeatherData } from "../../../types/shared";
 
 // Initialize OpenAI client
 const openai = new OpenAI({
@@ -17,7 +18,7 @@ async function getGridPoints(lat: number, lon: number) {
       `${WEATHER_API_BASE}/points/${lat},${lon}`,
       {
         headers: {
-          "User-Agent": "(damir.fun, damir.hara@gmail.com)", // Replace with your info
+          "User-Agent": "(your-website.com, contact@your-email.com)", // Replace with your info
           Accept: "application/geo+json",
         },
       }
@@ -29,7 +30,7 @@ async function getGridPoints(lat: number, lon: number) {
   }
 }
 
-async function getWeather(lat: number, lon: number) {
+async function getWeather(lat: number, lon: number): Promise<WeatherData> {
   try {
     // First, get the grid points for the location
     const gridData = await getGridPoints(lat, lon);
