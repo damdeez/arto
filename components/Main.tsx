@@ -13,14 +13,18 @@ function Main() {
 
   return (
     <main className="flex flex-col items-center height-full mt-8">
-      Arto, a dog. The current update:
+      Arto, a dog.
       {summary && (
         <div className="w-xl p-4 mt-8 bg-slate-100 rounded-lg border-1 border-slate-300 shadow-sm">
-          {/* <h3 className="font-medium mb-2">Analysis:</h3> */}
+          <h3 className="font-medium mb-2">The current update:</h3>
           <p>{summary}</p>
         </div>
       )}
-      <Image src={ArtoPic} alt="arto" className="w-100 shadow-xl rounded-lg absolute bottom-0" />
+      <Image
+        src={ArtoPic}
+        alt="arto"
+        className="w-100 shadow-xl rounded-lg absolute bottom-0"
+      />
     </main>
   );
 }
