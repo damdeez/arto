@@ -1,6 +1,6 @@
 # Arto, the dog 🐶
 
-Little project dedicated to my dog. It gets his current status via an input and then it generates a "mood" using the OpenAI and Weather.gov APIs. Built with NextJS, Tailwind, TypeScript and OpenAI SDK.
+Little project dedicated to my dog. It gets his current status via an input and then it generates a "mood" using the OpenAI and Weather.gov APIs. Built with NextJS, React, Tailwind, TypeScript and OpenAI SDK.
 
 ## Getting Started
 
