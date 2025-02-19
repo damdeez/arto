@@ -1,4 +1,3 @@
-import styles from "../styles/Home.module.css";
 import ArtoPic from "../assets/arto-on-porch.jpg";
 import Image from "next/image";
 import { useEffect, useState } from "react";
