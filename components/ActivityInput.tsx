@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { WeatherData } from "../types/shared";
 
 import "../styles/globals.css";
+import Summary from "./Summary";
 
 const isLocationInUS = (lat: number, lon: number) => {
   return (
@@ -82,36 +83,36 @@ function ActivityInput() {
     localStorage.setItem("artoAnalysis", analysis);
     setSummary(analysis);
     setLoading(false);
+    setDogActivity("");
   };
 
   return (
-    <main className="flex-col gap-2 p-8 sm:flex-row sm:items-center sm:gap-6 sm:py-4">
+    <main className="flex flex-col gap-2 p-8 sm:flex-row sm:items-center sm:gap-6 sm:py-4">
       {errorMessage && <div>{errorMessage}</div>}
       <form
         onSubmit={handleSubmit}
         className="flex-row gap-4 sm:flex sm:flex-col"
       >
-        <label htmlFor="activity" className="block text-sm font-medium">
+        <label htmlFor="activity" className="mb-2 block text-sm font-medium">
           What is Arto doing right now?
         </label>
-        <input
-          className="p-2 border border-gray-500 rounded-md shadow-sm focus:border-blue-300 focus:ring focus:ring-blue-200 focus:ring-opacity-50"
-          type="text"
-          id="activity"
-          placeholder="What is Arto doing?"
-          value={dogActivity}
-          onChange={(e) => setDogActivity(e.target.value)}
-        />
-        <button
-          className="bg-blue-600 hover:bg-blue-700 hover:cursor text-white font-small py-2 px-2 rounded-lg cursor-pointer"
-          type="submit"
-          onClick={handleSubmit}
-          disabled={loading || !dogActivity.trim()}
-        >
-          {loading ? "Analyzing..." : "Analyze Mood"}
-        </button>
+        <div className="flex flex-col gap-4">
+          <textarea
+            className="flex h-100 p-4 border-gray-500 rounded-lg border-2 border-slate-300 shadow-xs text-3xl text-wrap focus:border-blue-300 focus:ring focus:ring-blue-200 focus:ring-opacity-50"
+            id="activity"
+            value={dogActivity}
+            onChange={(e) => setDogActivity(e.target.value)}
+          />
+          <button
+            className="bg-blue-600 hover:bg-blue-700 hover:cursor text-white font-small py-2 px-2 rounded-lg cursor-pointer"
+            type="submit"
+            onClick={handleSubmit}
+            disabled={loading || !dogActivity.trim()}
+          >
+            {loading ? "Analyzing..." : "Analyze Mood"}
+          </button>
+        </div>
       </form>
-
       {weather && (
         <div className="mt-6 p-4 bg-slate-50 rounded-lg space-y-2">
           <div className="flex items-center justify-between">
@@ -126,12 +127,7 @@ function ActivityInput() {
           </div>
         </div>
       )}
-      {summary && (
-        <div className="w-xl p-4 mt-8 bg-slate-100 rounded-lg border-1 border-slate-300 shadow-sm">
-          <h3 className="font-medium mb-2">Analysis:</h3>
-          <p>{summary}</p>
-        </div>
-      )}
+      <Summary summary={summary} />
     </main>
   );
 }

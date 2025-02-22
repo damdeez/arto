@@ -1,6 +1,7 @@
 import ArtoPic from "../assets/arto-on-porch.jpg";
 import Image from "next/image";
 import { useEffect, useState } from "react";
+import Summary from "./Summary";
 
 function Main() {
   const [summary, setSummary] = useState<string | null>("");
@@ -12,18 +13,13 @@ function Main() {
   }, []);
 
   return (
-    <main className="flex flex-col items-center height-full mt-8">
+    <main className="flex flex-col items-center height-full mt-8 sm:items-center sm:gap-6 sm:py-4">
       Arto, a dog.
-      {summary && (
-        <div className="w-xl p-4 mt-8 bg-slate-100 rounded-lg border-1 border-slate-300 shadow-sm">
-          <h3 className="font-medium mb-2">The current update:</h3>
-          <p>{summary}</p>
-        </div>
-      )}
+      <Summary summary={summary} />
       <Image
         src={ArtoPic}
         alt="arto"
-        className="w-100 shadow-xl rounded-lg absolute bottom-0"
+        className="w-100 shadow-xl rounded-lg absolute -bottom-5"
       />
     </main>
   );
