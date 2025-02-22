@@ -19,7 +19,7 @@ function Main() {
       <Image
         src={ArtoPic}
         alt="arto"
-        className="w-100 shadow-xl rounded-lg absolute -bottom-5"
+        className="w-80 shadow-xl rounded-lg absolute -bottom-5"
       />
     </main>
   );
