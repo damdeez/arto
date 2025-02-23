@@ -3,6 +3,7 @@ import { WeatherData } from "../types/shared";
 
 import "../styles/globals.css";
 import Summary from "./Summary";
+import Link from "next/link";
 
 const isLocationInUS = (lat: number, lon: number) => {
   return (
@@ -88,12 +89,10 @@ function ActivityInput() {
 
   return (
     <main className="flex flex-col gap-2 p-8 sm:items-center sm:gap-6 sm:py-4">
+      <Link href="/" className="text-xs font-bold">&#9664; BACK</Link>
       {errorMessage && <div>{errorMessage}</div>}
-      <form
-        onSubmit={handleSubmit}
-        className="flex flex-col gap-4 sm:flex-col"
-      >
-        <label htmlFor="activity" className="mb-2 block text-sm font-medium">
+      <form onSubmit={handleSubmit} className="flex flex-col gap-4 sm:flex-col">
+        <label htmlFor="activity" className="mb-2 block text-lg font-medium">
           What is Arto doing right now?
         </label>
         <div className="flex flex-col gap-4">

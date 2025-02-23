@@ -13,14 +13,14 @@ function Main() {
   }, []);
 
   return (
-    <main className="flex flex-col items-center height-full mt-8 sm:items-center sm:gap-6 sm:py-4">
+    <main className="flex flex-col items-center height-full mt-4 sm:items-center sm:gap-6 sm:py-4">
       Arto, a dog.
-      <Summary summary={summary} />
       <Image
         src={ArtoPic}
         alt="arto"
-        className="w-80 shadow-xl rounded-lg absolute -bottom-5"
+        className="w-90 mt-4 shadow-xl rounded-lg"
       />
+      <Summary summary={summary} />
     </main>
   );
 }
