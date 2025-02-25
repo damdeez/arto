@@ -6,7 +6,7 @@ const sql = neon(`${process.env.DATABASE_URL}`);
 
 export async function getLatestStatus() {
   const result = await sql("SELECT latest_status FROM status");
-  return result.length > 0 ? result[0].latest_status : null;
+  return result.length > 0 ? result[result.length - 1].latest_status : null;
 }
 
 export async function setLatestStatus(status: string) {  

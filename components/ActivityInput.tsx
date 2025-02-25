@@ -4,7 +4,6 @@ import { useEffect, useState } from "react";
 import Link from "next/link";
 
 import { WeatherData } from "../types/shared";
-import "../styles/globals.css";
 import Summary from "./Summary";
 
 const isLocationInUS = (lat: number, lon: number) => {
@@ -74,15 +73,15 @@ function ActivityInput() {
     }
   };
 
-  const addMoodStatus = async (status: string) => {
+  const addMoodStatus = async (analysis: string) => {
     try {
       const response = await fetch("/api/set-latest-status", {
-        method: "PUT",
+        method: "POST",
         headers: {
           "Content-Type": "application/json",
         },
         body: JSON.stringify({
-          status,
+          analysis,
         }),
       });
 
@@ -102,10 +101,11 @@ function ActivityInput() {
 
     setLoading(true);
     const analysis = await analyzeDogMood(dogActivity);
-    // Set the analysis to Local Storage
-    localStorage.setItem("artoAnalysis", analysis);
     // add to database
-    addMoodStatus(analysis);
+    await addMoodStatus(analysis);
+    // Set the analysis to Local Storage
+    // localStorage.setItem("artoAnalysis", analysis);
+
     setLoading(false);
     setDogActivity("");
   };

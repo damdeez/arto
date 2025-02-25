@@ -18,4 +18,3 @@ export async function GET() {
     );
   }
 }
-// Rewrite this for Next.js API Routes

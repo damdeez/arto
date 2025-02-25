@@ -3,7 +3,7 @@ export const metadata = {
   description: 'Arto app',
 };
 
-import "../styles/globals.css";
+import "./globals.css";
 
 export default function RootLayout({
   children,
