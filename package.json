@@ -10,6 +10,7 @@
   },
   "dependencies": {
     "@ai-sdk/openai": "^1.1.12",
+    "@neondatabase/serverless": "^0.10.4",
     "@tailwindcss/postcss": "^4.0.7",
     "@vercel/postgres": "^0.10.0",
     "ai": "^4.1.41",

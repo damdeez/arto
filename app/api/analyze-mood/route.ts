@@ -23,7 +23,7 @@ async function getGridPoints(lat: number, lon: number) {
         },
       }
     );
-    console.log(">>>> response.data", response.data);
+
     return response.data.properties;
   } catch (error) {
     console.error("Error getting grid points:", error);

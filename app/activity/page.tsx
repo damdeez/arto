@@ -1,7 +1,7 @@
 import Head from "next/head";
 import ActivityInput from "../../components/ActivityInput";
 
-export default function Doing() {
+export default function Activity() {
   return (
     <>
       <Head>

@@ -1,7 +1,5 @@
-import Head from 'next/head';
-import Main from '../components/Main';
-
-import "../styles/globals.css";
+import Head from "next/head";
+import Main from "../components/Main";
 
 export default function Home() {
   return (

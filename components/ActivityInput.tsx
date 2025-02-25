@@ -1,9 +1,11 @@
-import { useEffect, useState } from "react";
-import { WeatherData } from "../types/shared";
+"use client";
 
+import { useEffect, useState } from "react";
+import Link from "next/link";
+
+import { WeatherData } from "../types/shared";
 import "../styles/globals.css";
 import Summary from "./Summary";
-import Link from "next/link";
 
 const isLocationInUS = (lat: number, lon: number) => {
   return (
@@ -47,7 +49,7 @@ function ActivityInput() {
     }
   }, []);
 
-  const analyzeDogMood = async (activity) => {
+  const analyzeDogMood = async (activity: string) => {
     try {
       const response = await fetch("/api/analyze-mood", {
         method: "POST",
@@ -72,6 +74,26 @@ function ActivityInput() {
     }
   };
 
+  const addMoodStatus = async (status: string) => {
+    try {
+      const response = await fetch("/api/set-latest-status", {
+        method: "PUT",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          status,
+        }),
+      });
+
+      if (!response.ok) {
+        throw new Error("Failed to add mood to DB at this time.");
+      }
+    } catch (error) {
+      return "Unable to add mood to DB at this time.";
+    }
+  };
+
   const handleSubmit = async (e) => {
     e.preventDefault();
     if (!dogActivity.trim()) {
@@ -82,14 +104,17 @@ function ActivityInput() {
     const analysis = await analyzeDogMood(dogActivity);
     // Set the analysis to Local Storage
     localStorage.setItem("artoAnalysis", analysis);
-    setSummary(analysis);
+    // add to database
+    addMoodStatus(analysis);
     setLoading(false);
     setDogActivity("");
   };
 
   return (
     <main className="flex flex-col gap-2 p-8 sm:items-center sm:gap-6 sm:py-4">
-      <Link href="/" className="text-xs font-bold">&#9664; BACK</Link>
+      <Link href="/" className="text-xs font-bold">
+        &#9664; BACK
+      </Link>
       {errorMessage && <div>{errorMessage}</div>}
       <form onSubmit={handleSubmit} className="flex flex-col gap-4 sm:flex-col">
         <label htmlFor="activity" className="mb-2 block text-lg font-medium">
@@ -126,7 +151,7 @@ function ActivityInput() {
           </div>
         </div>
       )}
-      <Summary summary={summary} />
+      <Summary />
     </main>
   );
 }
