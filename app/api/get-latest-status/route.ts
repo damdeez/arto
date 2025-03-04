@@ -1,5 +1,5 @@
 import { NextResponse } from "next/server";
-import { getLatestStatus } from "../../../lib/db";
+import { getLatestStatus } from "../../../db/db";
 
 export async function GET() {
   try {

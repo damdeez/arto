@@ -1,5 +1,5 @@
 import { NextResponse } from "next/server";
-import { setLatestStatus } from "../../../lib/db";
+import { setLatestStatus } from "../../../db/db";
 
 export async function POST(request: Request) {
   // console.info("req", req.method);

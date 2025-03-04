@@ -1,28 +1,9 @@
-import { useEffect, useState } from "react";
+interface SummaryProps {
+  summary: string;
+  loading?: boolean;
+}
 
-function Summary() {
-  const [loading, setLoading] = useState(false);
-  const [summary, setSummary] = useState<string | null>("");
-
-  useEffect(() => {
-    // Get analysis from Local Storage
-    // const savedSummary = localStorage.getItem("artoAnalysis");
-    // setSummary(savedSummary);
-    setLoading(true);
-    async function fetchStatus() {
-      const res = await fetch("/api/get-latest-status", {
-        method: "GET",
-      });
-      const data = await res.json();
-      if (res.ok) {
-        setSummary(data.latestStatus);
-        setLoading(false);
-      }
-    }
-
-    fetchStatus();
-  }, []);
-
+function Summary({ summary, loading }: SummaryProps) {
   return (
     <div className="max-w-90 w-100% p-4 mt-4 bg-slate-50 rounded-lg border-1 border-slate-200">
       {loading ? (

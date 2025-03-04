@@ -103,9 +103,7 @@ function ActivityInput() {
     const analysis = await analyzeDogMood(dogActivity);
     // add to database
     await addMoodStatus(analysis);
-    // Set the analysis to Local Storage
-    // localStorage.setItem("artoAnalysis", analysis);
-
+    setSummary(analysis);
     setLoading(false);
     setDogActivity("");
   };
@@ -151,7 +149,7 @@ function ActivityInput() {
           </div>
         </div>
       )}
-      <Summary />
+      <Summary loading={loading} summary={summary ? summary : ""} />
     </main>
   );
 }
